@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSubjectsThunk, deleteSubjectThunk } from "../../store/subject";
 
 import AddSubjectModal from "../ModalSubjectAdd";
+import EditSubjectModal from "../ModalSubjectEdit";
 
 const SubjectPage = () => {
 
@@ -36,7 +37,10 @@ const SubjectPage = () => {
                                 {subject.heading}
                             </li>
                         </ul>
-                        <button onClick={() => deleteSubject(subject.id)}>delete</button>
+                        <div>
+                            <EditSubjectModal subject={subject} />
+                            <button onClick={() => deleteSubject(subject.id)}>delete</button>
+                        </div>
                     </div>
                 ))}
             </div>

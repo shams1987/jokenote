@@ -1,1 +1,4 @@
 /* TODO Add site wide styles */
+li#error::marker {
+    content: "❌"
+}

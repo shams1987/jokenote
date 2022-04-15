@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
@@ -29,6 +28,11 @@ const NavBar = () => {
         </li>
         <li>
           <LogoutButton />
+        </li>
+        <li>
+          <NavLink to='/subjects' exact={true} >
+            My Subjects
+          </NavLink>
         </li>
       </ul>
     </nav>

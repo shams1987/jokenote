@@ -30,3 +30,12 @@ def delete_subject(subjectId):
     db.session.delete(deleted_subject)
     db.session.commit()
     return {"deleted_subject": deleted_subject.to_dict()}
+
+@subject_routes.route("/edit", methods=["PUT"])
+def editSubject():
+    form = SubjectForm()
+    subject = Subject.query.get(form.data["id"])
+    subject.heading = form.data["heading"]
+
+    db.session.add(subject)
+    db.session.commit()

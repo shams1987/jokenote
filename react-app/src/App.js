@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import SubjectPage from './components/SubjectPage';
+import JokesPage from './components/JokesPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/subjects/' exact={true} >
             <SubjectPage />
+          </ProtectedRoute>
+          <ProtectedRoute path='/subjects/:subjectId' exact={true} >
+            <JokesPage />
           </ProtectedRoute>
         </Switch>
       )}

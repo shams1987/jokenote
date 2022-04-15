@@ -1,6 +1,7 @@
 const GET_SUBJECTS = "subjects/all";
 const ADD_SUBJECT = "subjects/add";
 const DELETE_SUBJECT = "subject/delete";
+const EDIT_SUBJECT = "subject/edit";
 
 
 // action creator for get subjects
@@ -19,11 +20,19 @@ const addSubject = subject => {
     };
 };
 
-//action creator for delete subjects
+//action creator for delete subject
 const deleteSubject = id => {
     return {
         type: DELETE_SUBJECT,
         id,
+    };
+};
+
+// action creator for edit subject
+const editSubject = subject => {
+    return {
+        type: EDIT_SUBJECT,
+        subject,
     };
 };
 
@@ -37,7 +46,7 @@ export const getSubjectsThunk = user_id => async dispatch => {
     }
 };
 
-// think for add a subject
+// thunk for add a subject
 export const addSubjectThunk = subject => async dispatch => {
     const { user_id } = subject;
     const res = await fetch(`/api/subjects/${user_id}`, {
@@ -68,6 +77,17 @@ export const deleteSubjectThunk = id => async dispatch => {
     }
 };
 
+//edit thunk
+export const editSubjectThunk = subject => async dispatch => {
+    const res = await fetch(`/api/subjects/edit`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(subject),
+    });
+    const updateSubject = await res.json();
+    dispatch(editSubject(updateSubject));
+};
+
 
 const initialState = {};
 
@@ -86,6 +106,10 @@ const subjectReducer = (state = initialState, action) => {
 
         case DELETE_SUBJECT:
             delete newState[action.id];
+            return newState;
+
+        case EDIT_SUBJECT:
+            newState[action.subject.id] = action.subject;
             return newState;
 
         default:

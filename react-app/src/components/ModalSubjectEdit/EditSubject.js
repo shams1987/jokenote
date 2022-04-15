@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addSubjectThunk } from "../../store/subject"
+import { editSubjectThunk } from "../../store/subject"
 
 
-function AddSubject() {
+function EditSubject({ subject }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-
-    const [heading, setHeading] = useState("");
+    console.log(subject, "*********************************************")
+    const [heading, setHeading] = useState(subject.heading);
     const [errors, setErrors] = useState([])
 
     const handleSubmit = e => {
         e.preventDefault();
-        let subject = {
+        let newSubject = {
+            id: subject.id,
             user_id: sessionUser.id,
             heading,
         };
@@ -23,7 +24,7 @@ function AddSubject() {
 
         if ((heading) && (heading.length <= 30)) {
 
-            dispatch(addSubjectThunk(subject));
+            dispatch(editSubjectThunk(newSubject));
             window.location.reload(false);
         }
         else {
@@ -50,11 +51,11 @@ function AddSubject() {
                         onChange={e => setHeading(e.target.value)}
                     />
                 </label>
-                <button type="submit">Add Subject</button>
+                <button type="submit">Edit Subject</button>
             </form>
         </div>
     );
 }
 
 
-export default AddSubject
+export default EditSubject
