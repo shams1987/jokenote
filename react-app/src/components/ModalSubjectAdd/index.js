@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import AddSubject from "./AddSubject";
 
-//import "../HomePage/homepage.css";
 
 function AddSubjectModal() {
     const [showModal, setShowModal] = useState(false);

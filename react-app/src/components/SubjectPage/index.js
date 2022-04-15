@@ -7,7 +7,7 @@ import AddSubjectModal from "../ModalSubjectAdd";
 const SubjectPage = () => {
 
     const dispatch = useDispatch();
-    const subjectList = useSelector(state => Object.values(state.subject));
+    const subjectList = useSelector(state => Object.values(state.subject).reverse());
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
 
