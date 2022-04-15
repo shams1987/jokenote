@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSubjectsThunk } from "../../store/subject";
+import { getSubjectsThunk, deleteSubjectThunk } from "../../store/subject";
+
+import AddSubjectModal from "../ModalSubjectAdd";
 
 const SubjectPage = () => {
 
@@ -14,13 +16,18 @@ const SubjectPage = () => {
         dispatch(getSubjectsThunk(userId));
     }, [dispatch, userId]);
 
-
+    const deleteSubject = id => {
+        dispatch(deleteSubjectThunk(id));
+    };
 
 
 
     return (
         <div>
-            <h1>Subjects</h1>
+            <h1>You have {subjectList.length} Subjects</h1>
+            <div>
+                <AddSubjectModal />
+            </div>
             <div>
                 {subjectList?.map(subject => (
                     <div>
@@ -29,6 +36,7 @@ const SubjectPage = () => {
                                 {subject.heading}
                             </li>
                         </ul>
+                        <button onClick={() => deleteSubject(subject.id)}>delete</button>
                     </div>
                 ))}
             </div>
