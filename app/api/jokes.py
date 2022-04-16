@@ -23,3 +23,11 @@ def postJoke(userId, subjectId):
     db.session.add(new_joke)
     db.session.commit()
     return new_joke.to_dict()
+
+
+@joke_routes.route("/delete/<int:jokeId>", methods=["DELETE"])
+def delete_joke(jokeId):
+    deleted_joke = Joke.query.filter(Joke.id == jokeId).first()
+    db.session.delete(deleted_joke)
+    db.session.commit()
+    return {"deleted_joke": deleted_joke.to_dict()}

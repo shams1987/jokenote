@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getJokesThunk } from "../../store/joke";
+import { getJokesThunk, deleteJokeThunk } from "../../store/joke";
 import { useParams } from "react-router-dom";
 import AddJokeModal from "../ModalJokeAdd";
 
@@ -20,6 +20,10 @@ const JokesPage = () => {
         dispatch(getJokesThunk(userId, subject_id));
     }, [dispatch, userId, subject_id]);
 
+    const deleteJoke = id => {
+        dispatch(deleteJokeThunk(id));
+    };
+
     return (
         <div>
             <div><h1>{subject}</h1></div>
@@ -34,11 +38,11 @@ const JokesPage = () => {
                         <li key={joke.id + "B"}>
                             {joke.content}
                         </li>
-                        <li key={joke.id + "B"}>
+                        <li key={joke.id + "C"}>
                             {joke.rating}
                         </li>
                         <div><button>update</button></div>
-                        <div><button>delete</button></div>
+                        <div><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
                     </ul>
                 </div>
             ))}
