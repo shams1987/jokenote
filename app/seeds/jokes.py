@@ -43,6 +43,13 @@ def seed_jokes():
         content = "How do you find Will Smith in the snow? Look for the fresh prints.",
         rating = 2
     )
+    joke7 = Joke(
+        user_id = 2,
+        subject_id = 1,
+        title = "Light bulb",
+        content = "What did one light bulb say to the other? Watts up",
+        rating = 2
+    )
 
 
     db.session.add_all(
@@ -52,7 +59,8 @@ def seed_jokes():
             joke3,
             joke4,
             joke5,
-            joke6
+            joke6,
+            joke7
         ]
     )
     db.session.commit()

@@ -1,0 +1,10 @@
+#root {
+    display: flex;
+}
+
+nav {
+    position: sticky;
+    background-color: grey;
+
+
+}

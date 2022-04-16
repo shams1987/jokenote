@@ -49,7 +49,7 @@ function App() {
           <ProtectedRoute path='/subjects/' exact={true} >
             <SubjectPage />
           </ProtectedRoute>
-          <ProtectedRoute path='/subjects/:subjectId' exact={true} >
+          <ProtectedRoute path='/jokes/:subjectId' exact={true} >
             <JokesPage />
           </ProtectedRoute>
         </Switch>

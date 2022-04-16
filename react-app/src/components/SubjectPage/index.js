@@ -5,6 +5,8 @@ import { getSubjectsThunk, deleteSubjectThunk } from "../../store/subject";
 import AddSubjectModal from "../ModalSubjectAdd";
 import EditSubjectModal from "../ModalSubjectEdit";
 
+import "./SubjectPage.css";
+
 const SubjectPage = () => {
 
     const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const SubjectPage = () => {
             </div>
             <div>
                 {subjectList?.map(subject => (
-                    <div>
+                    <div className="subject-container">
                         <ul>
                             <li key={subject.id + "A"}>
                                 {subject.heading}
