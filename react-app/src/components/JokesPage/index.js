@@ -2,15 +2,19 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getJokesThunk } from "../../store/joke";
 import { useParams } from "react-router-dom";
+import AddJokeModal from "../ModalJokeAdd";
 
 
 const JokesPage = () => {
 
     const dispatch = useDispatch();
     const jokeList = useSelector(state => Object.values(state.joke).reverse());
+    const subjectList = useSelector(state => Object.values(state.subject));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const subject_id = useParams().subjectId;
+    const subject = subjectList[subject_id];
+    //console.log(subjectList, "****************************")
 
     useEffect(() => {
         dispatch(getJokesThunk(userId, subject_id));
@@ -18,6 +22,9 @@ const JokesPage = () => {
 
     return (
         <div>
+            <div><h1>{subject}</h1></div>
+            <div><h1>You have {jokeList.length} jokes</h1></div>
+            <div><AddJokeModal /></div>
             {jokeList?.map(joke => (
                 <div>
                     <ul>
@@ -30,6 +37,8 @@ const JokesPage = () => {
                         <li key={joke.id + "B"}>
                             {joke.rating}
                         </li>
+                        <div><button>update</button></div>
+                        <div><button>delete</button></div>
                     </ul>
                 </div>
             ))}
