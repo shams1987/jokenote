@@ -1,6 +1,7 @@
 const GET_JOKES = "jokes/get";
 const ADD_JOKE = "jokes/add";
 const DELETE_JOKE = "jokes/delete";
+const EDIT_JOKE = "jokes/edit"
 
 // action creator for get jokes
 const getJokes = jokes => {
@@ -24,6 +25,14 @@ const deleteJoke = id => {
     return {
         type: DELETE_JOKE,
         id,
+    };
+};
+
+// action creator for edit joke
+const editJoke = joke => {
+    return {
+        type: EDIT_JOKE,
+        joke,
     };
 };
 
@@ -66,6 +75,17 @@ export const deleteJokeThunk = jokeId => async dispatch => {
     }
 };
 
+//edit joke thunk
+export const editJokeThunk = joke => async dispatch => {
+    const res = await fetch(`/api/jokes/edit`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(joke),
+    });
+    const updateJoke = await res.json();
+    dispatch(editJoke(updateJoke));
+};
+
 
 const initialState = {};
 
@@ -84,6 +104,10 @@ const jokeReducer = (state = initialState, action) => {
 
         case DELETE_JOKE:
             delete newState[action.id];
+            return newState;
+
+        case EDIT_JOKE:
+            newState[action.joke.id] = action.joke;
             return newState;
 
         default:

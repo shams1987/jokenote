@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getJokesThunk, deleteJokeThunk } from "../../store/joke";
 import { useParams } from "react-router-dom";
+
 import AddJokeModal from "../ModalJokeAdd";
+import EditJokeModal from "../ModalJokeEdit";
 
 
 const JokesPage = () => {
@@ -41,7 +43,7 @@ const JokesPage = () => {
                         <li key={joke.id + "C"}>
                             {joke.rating}
                         </li>
-                        <div><button>update</button></div>
+                        <EditJokeModal joke={joke} />
                         <div><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
                     </ul>
                 </div>

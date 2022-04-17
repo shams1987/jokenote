@@ -7,7 +7,7 @@ import { editSubjectThunk } from "../../store/subject"
 function EditSubject({ subject }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    console.log(subject, "*********************************************")
+
     const [heading, setHeading] = useState(subject.heading);
     const [errors, setErrors] = useState([])
 

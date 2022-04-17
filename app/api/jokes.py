@@ -31,3 +31,17 @@ def delete_joke(jokeId):
     db.session.delete(deleted_joke)
     db.session.commit()
     return {"deleted_joke": deleted_joke.to_dict()}
+
+
+@joke_routes.route("/edit", methods=["PUT"])
+def editJoke():
+    form = JokeForm()
+    joke = Joke.query.get(form.data["id"])
+    joke.user_id=form.data["user_id"],
+    joke.subject_id=form.data["subject_id"],
+    joke.title=form.data["title"],
+    joke.content=form.data["content"],
+    joke.rating=form.data["rating"],
+
+    db.session.add(joke)
+    db.session.commit()

@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addJokeThunk } from "../../store/joke";
 
-import { useParams } from "react-router-dom";
+import { editJokeThunk } from "../../store/joke"
 
 
-function AddJoke() {
-
+function EditJoke({ joke }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const subject_id = useParams().subjectId;
 
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [rating, setRating] = useState(0);
 
+    const [title, setTitle] = useState(joke.title);
+    const [content, setContent] = useState(joke.content);
+    const [rating, setRating] = useState(joke.rating);
     //const [errors, setErrors] = useState([])
 
     const handleSubmit = e => {
-
         e.preventDefault();
-        let joke = {
+        let newJoke = {
+            id: joke.id,
             user_id: sessionUser.id,
-            subject_id,
+            subject_id: joke.subject_id,
             title,
             content,
             rating
@@ -30,7 +27,7 @@ function AddJoke() {
 
         //error validation
 
-        dispatch(addJokeThunk(joke));
+        dispatch(editJokeThunk(newJoke));
         window.location.reload(false);
     };
 
@@ -67,11 +64,11 @@ function AddJoke() {
                         <option value="5">5</option>
                     </select>
                 </label>
-                <button type="submit">Add a joke</button>
+                <button type="submit">edit</button>
             </form>
         </div>
     );
 }
 
 
-export default AddJoke
+export default EditJoke
