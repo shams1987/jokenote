@@ -33,7 +33,7 @@ const SubjectPage = () => {
             </div>
             <div>
                 {subjectList?.map(subject => (
-                    <div className="subject-container">
+                    <div key={subject.id} className="subject-container">
                         <ul>
                             <li key={subject.id + "A"}>
                                 {subject.heading}

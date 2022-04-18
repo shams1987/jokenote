@@ -44,9 +44,9 @@ const NavBar = ({ loaded }) => {
             </NavLink>
             <div>
               {subjectList?.map(subject => (
-                <div>
+                <div key={subject.id}>
                   <ul>
-                    <li key={subject.id + "A"}>
+                    <li key={subject.id}>
                       <NavLink
                         to={`/jokes/${subject.id}`}
                         style={{ textDecoration: "none", color: "black" }} >
