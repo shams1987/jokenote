@@ -5,7 +5,7 @@ class Subject(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id =  db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    heading = db.Column(db.String(255), nullable=False)
+    heading = db.Column(db.String(30), nullable=False)
 
     # many subjects to one user
     user = db.relationship("User", back_populates = "subjects")

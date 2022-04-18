@@ -5,14 +5,14 @@ def seed_jokes():
         user_id = 1,
         subject_id = 3,
         title = "Horsing Around",
-        content = "A horse walks into a bar. The shocked bartender points a finger his way in alarm and yells, \“Hey!\”The horse says, \“You read my mind, buddy.\”",
+        content = "A horse walks into a bar. The shocked bartender points a finger his way in alarm and yells, Hey! The horse says, You read my mind, buddy.”",
         rating = 3
     )
     joke2 = Joke(
         user_id = 1,
         subject_id = 3,
         title = "A Funky Sort of Joke",
-        content = "A mushroom walks into a bar and orders a drink, but the bartender yells at him to get out before he stinks up the place. The mushroom looks taken aback and says, \“Why? I\’m a fun guy.\”",
+        content = "A mushroom walks into a bar and orders a drink, but the bartender yells at him to get out before he stinks up the place. The mushroom looks taken aback and says, Why? I am a fun guy.",
         rating = 4
     )
     joke3 = Joke(
@@ -44,11 +44,18 @@ def seed_jokes():
         rating = 2
     )
     joke7 = Joke(
-        user_id = 2,
+        user_id = 1,
         subject_id = 1,
         title = "Light bulb",
         content = "What did one light bulb say to the other? Watts up",
         rating = 2
+    )
+    joke8 = Joke(
+        user_id = 1,
+        subject_id = 4,
+        title = "A leaf",
+        content = "Knock, knock. Who s there? A leaf. A leaf who? A leaf you alone if you leaf me alone.",
+        rating = 5
     )
 
 
@@ -60,7 +67,8 @@ def seed_jokes():
             joke4,
             joke5,
             joke6,
-            joke7
+            joke7,
+            joke8
         ]
     )
     db.session.commit()

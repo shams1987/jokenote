@@ -12,7 +12,7 @@ def getJokes(userId, subjectId):
 
 @joke_routes.route("/all/<int:userId>", methods=["GET"])
 def getSubjects(userId):
-    jokes = Joke.query.filter(Joke.user_id == userId).order_by(desc(Joke.rating)).all()
+    jokes = Joke.query.filter(Joke.user_id == userId).all()
     return {"jokes": [joke.to_dict() for joke in jokes]}
 
 

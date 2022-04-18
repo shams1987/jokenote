@@ -11,14 +11,20 @@ def seed_subjects():
     )
     subject3 = Subject(
         user_id = 1,
-        heading = "Walks into a bar"
+        heading = "Bartender"
+    )
+    subject4 = Subject(
+        user_id = 1,
+        heading = "Knock Knock"
     )
 
     db.session.add_all(
         [
             subject1,
             subject2,
-            subject3
+            subject3,
+            subject4
+
         ]
     )
     db.session.commit()
