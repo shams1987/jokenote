@@ -28,7 +28,7 @@ const HomePage = () => {
         <div>
             <div><h1>You have {allJokesList.length} jokes with average rating of {avgRating}/5</h1></div>
             {allJokesList?.map(joke => (
-                <div>
+                <div key={joke.id}>
                     <ul>
                         <li key={joke.id + "A"}>
                             Title: {joke.title}

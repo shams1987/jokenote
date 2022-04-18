@@ -28,11 +28,10 @@ const JokesPage = () => {
 
     return (
         <div>
-            <div><h1>{subject}</h1></div>
             <div><h1>You have {jokeList.length} jokes</h1></div>
             <div><AddJokeModal /></div>
             {jokeList?.map(joke => (
-                <div>
+                <div key={joke.id}>
                     <ul>
                         <li key={joke.id + "A"}>
                             Title: {joke.title}

@@ -44,7 +44,7 @@ const NavBar = ({ loaded }) => {
             </NavLink>
             <div>
               {subjectList?.map(subject => (
-                <div>
+                <div key={subject.id}>
                   <ul>
                     <li key={subject.id + "A"}>
                       <NavLink
