@@ -41,12 +41,11 @@ const HomePage = () => {
         dispatch(getAllJokesThunk(userId));
     }, [dispatch, userId]);
 
+    // average rating
     let sum = 0;
-
     allJokesList.forEach(joke => {
         sum += joke.rating;
     });
-
     const avgRating = (sum / allJokesList.length).toFixed(1);
 
 
