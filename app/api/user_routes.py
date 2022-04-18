@@ -25,8 +25,6 @@ def user(id):
 def profile_edit(id):
     form = EditProfileForm()
     user = User.query.get(id)
-    # form["csrf_token"].data = request.cookies["csrf_token"]
-    # if form.validate_on_submit():
     user.username = form.data["username"]
     user.email = form.data["email"]
     db.session.add(user)

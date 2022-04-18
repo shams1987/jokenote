@@ -11,12 +11,10 @@ const JokesPage = () => {
 
     const dispatch = useDispatch();
     const jokeList = useSelector(state => Object.values(state.joke).reverse());
-    const subjectList = useSelector(state => Object.values(state.subject));
+    //const subjectList = useSelector(state => Object.values(state.subject));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const subject_id = useParams().subjectId;
-    const subject = subjectList[subject_id];
-    //console.log(subjectList, "****************************")
 
     useEffect(() => {
         dispatch(getJokesThunk(userId, subject_id));
