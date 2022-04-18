@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function User() {
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const { userId } = useParams();
+
+  const sessionUser = useSelector(state => state.session.user);
+
+  const history = useHistory();
 
   useEffect(() => {
     if (!userId) {
@@ -23,14 +28,19 @@ function User() {
   return (
     <ul>
       <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
         <strong>Username</strong> {user.username}
       </li>
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      {sessionUser.id === user.id && (
+        <button
+          className=""
+          onClick={() => history.push(`/users/${userId}/edit`)}
+        >
+          Edit
+        </button>
+      )}
     </ul>
   );
 }

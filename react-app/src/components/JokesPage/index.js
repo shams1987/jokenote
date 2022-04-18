@@ -35,13 +35,13 @@ const JokesPage = () => {
                 <div>
                     <ul>
                         <li key={joke.id + "A"}>
-                            {joke.title}
+                            Title: {joke.title}
                         </li>
                         <li key={joke.id + "B"}>
-                            {joke.content}
+                            Joke: {joke.content}
                         </li>
                         <li key={joke.id + "C"}>
-                            {joke.rating}
+                            Rating: {joke.rating}/5
                         </li>
                         <EditJokeModal joke={joke} />
                         <div><button onClick={() => deleteJoke(joke.id)}>delete</button></div>

@@ -11,7 +11,7 @@ class Subject(db.Model):
     user = db.relationship("User", back_populates = "subjects")
 
     # one subject to many jokes
-    jokes = db.relationship("Joke", back_populates = "subject")
+    jokes = db.relationship("Joke", back_populates = "subject", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

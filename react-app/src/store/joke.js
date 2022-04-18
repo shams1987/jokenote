@@ -1,4 +1,5 @@
 const GET_JOKES = "jokes/get";
+const GET_ALL_JOKES = "jokes/all";
 const ADD_JOKE = "jokes/add";
 const DELETE_JOKE = "jokes/delete";
 const EDIT_JOKE = "jokes/edit"
@@ -7,6 +8,14 @@ const EDIT_JOKE = "jokes/edit"
 const getJokes = jokes => {
     return {
         type: GET_JOKES,
+        jokes,
+    };
+};
+
+// action creator for get all jokes for home page
+const getAllJokes = jokes => {
+    return {
+        type: GET_ALL_JOKES,
         jokes,
     };
 };
@@ -42,6 +51,16 @@ export const getJokesThunk = (user_id, subject_id) => async dispatch => {
     if (res.ok) {
         const data = await res.json();
         dispatch(getJokes(data));
+        return data;
+    }
+};
+
+// thunk for get all jokes for home page
+export const getAllJokesThunk = (userId) => async dispatch => {
+    const res = await fetch(`/api/jokes/all/${userId}`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getAllJokes(data));
         return data;
     }
 };
@@ -94,6 +113,11 @@ const jokeReducer = (state = initialState, action) => {
     let newState = { ...state };
     switch (action.type) {
         case GET_JOKES:
+            newState = {};
+            action.jokes.jokes.forEach(joke => (newState[joke.id] = joke));
+            return newState;
+
+        case GET_ALL_JOKES:
             newState = {};
             action.jokes.jokes.forEach(joke => (newState[joke.id] = joke));
             return newState;

@@ -47,7 +47,11 @@ const NavBar = ({ loaded }) => {
                 <div>
                   <ul>
                     <li key={subject.id + "A"}>
-                      {subject.heading}
+                      <NavLink
+                        to={`/jokes/${subject.id}`}
+                        style={{ textDecoration: "none", color: "black" }} >
+                        {subject.heading}
+                      </NavLink>
                     </li>
                   </ul>
                 </div>

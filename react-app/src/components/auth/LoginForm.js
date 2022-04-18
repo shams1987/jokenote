@@ -30,6 +30,15 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  // demo button sign up
+  const handleSubmitDemo = async (e) => {
+    e.preventDefault();
+    const demoEmail = "demo@aa.io"
+    const demoPassword = "password"
+    await dispatch(login(demoEmail, demoPassword)
+    )
+  };
+
   return (
     <form onSubmit={onLogin}>
       <div>
@@ -57,6 +66,11 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+      </div>
+      <div>
+        <button className="" onClick={handleSubmitDemo}>
+          DEMO
+        </button>
       </div>
     </form>
   );
