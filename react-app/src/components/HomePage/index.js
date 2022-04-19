@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJokesThunk } from "../../store/joke"
+import "./HomePage.css"
 
 
 const HomePage = () => {
@@ -46,36 +47,41 @@ const HomePage = () => {
     allJokesList.forEach(joke => {
         sum += joke.rating;
     });
-    const avgRating = (sum / allJokesList.length).toFixed(1);
+    const avgRating = (allJokesList.length > 0) ? (sum / allJokesList.length).toFixed(1) : 0;
 
 
     return (
         <div>
-            <div><h1>You have {allJokesList.length} jokes with average rating of {avgRating}/5</h1></div>
-            <div>
-                <label>
-                    Order
-                    <select
-                        value={rating}
-                        onChange={e => setRating(e.target.value)}
-                    >
-                        <option value="desc">highest rated</option>
-                        <option value="asc">lowest rated</option>
-                    </select>
-                </label>
+            <div className="home-title"><h1>You have {allJokesList.length} jokes with average rating of {avgRating}/5</h1></div>
+            <div className="home-rating-selector">
+                <select
+                    value={rating}
+                    onChange={e => setRating(e.target.value)}
+                >
+                    <option value="desc">highest rated</option>
+                    <option value="asc">lowest rated</option>
+                </select>
             </div>
             {sortedJokes?.map(joke => (
                 <div key={joke.id}>
-                    <ul>
-                        <li key={joke.id + "A"}>
-                            Title: {joke.title}
-                        </li>
-                        <li key={joke.id + "B"}>
-                            Joke: {joke.content}
-                        </li>
-                        <li key={joke.id + "C"}>
-                            Rating: {joke.rating}/5
-                        </li>
+                    <ul className="home-joke-list">
+                        <div className="home-joke-title-container">
+                            <div className="home-joke-title">
+                                <li key={joke.id + "A"}>
+                                    {joke.title}
+                                </li>
+                            </div>
+                            <div className="home-joke-rating">
+                                <li key={joke.id + "C"}>
+                                    rating: {joke.rating}/5
+                                </li>
+                            </div>
+                        </div>
+                        <div className="home-joke-container">
+                            <li key={joke.id + "B"}>
+                                {joke.content}
+                            </li>
+                        </div>
                     </ul>
                 </div>
             ))}

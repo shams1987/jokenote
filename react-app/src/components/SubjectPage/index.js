@@ -27,14 +27,18 @@ const SubjectPage = () => {
 
     return (
         <div>
-            <h1>You have {subjectList.length} Subjects</h1>
-            <div>
-                <AddSubjectModal />
+            <div className="subject-title-container">
+                <div className="sibject-title">
+                    <h1>You have {subjectList.length} Subjects</h1>
+                </div>
+                <div>
+                    <AddSubjectModal />
+                </div>
             </div>
             <div>
                 {subjectList?.map(subject => (
                     <div key={subject.id} className="subject-container">
-                        <ul>
+                        <ul className="subject-list">
                             <li key={subject.id + "A"}>
                                 {subject.heading}
                             </li>

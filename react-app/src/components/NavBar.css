@@ -8,3 +8,11 @@ nav {
 
 
 }
+
+.nav-list {
+    list-style-type: none;
+}
+
+.nav-sub-list {
+    list-style-type: none;
+}

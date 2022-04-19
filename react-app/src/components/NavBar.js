@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getSubjectsThunk } from '../store/subject';
 import "./NavBar.css";
 
 const NavBar = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user);
   const subjectList = useSelector(state => Object.values(state.subject).reverse());
   const userId = sessionUser?.id;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getSubjectsThunk(userId));
+    })();
+  }, [dispatch, userId]);
 
   if (sessionUser) {
 
     return (
       <nav>
-        <ul>
+        <ul className="nav-list">
           <li>
             <LogoutButton />
           </li>
@@ -32,7 +40,7 @@ const NavBar = ({ loaded }) => {
               activeClassName="active"
               style={{ textDecoration: "none" }}
             >
-              My Profile
+              Profile
             </NavLink>
           </li>
           <li>
@@ -40,12 +48,12 @@ const NavBar = ({ loaded }) => {
               to='/subjects' exact={true}
               style={{ textDecoration: "none" }}
             >
-              My Subjects
+              Subjects
             </NavLink>
             <div>
               {subjectList?.map(subject => (
                 <div key={subject.id}>
-                  <ul>
+                  <ul className='nav-sub-list'>
                     <li key={subject.id + "A"}>
                       <NavLink
                         to={`/jokes/${subject.id}`}
