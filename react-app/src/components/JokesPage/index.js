@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getJokesThunk, deleteJokeThunk } from "../../store/joke";
-import { getSubjectsThunk } from '../../store/subject';
+//import { getSubjectsThunk } from '../../store/subject';
 import { useParams } from "react-router-dom";
 
 import AddJokeModal from "../ModalJokeAdd";
@@ -17,16 +17,15 @@ const JokesPage = () => {
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const subject_id = useParams().subjectId;
+    const subject = subjectList[subject_id - 1]?.heading;
 
-    useEffect(() => {
-        (async () => {
-            await dispatch(getSubjectsThunk(userId));
-        })();
-    }, [dispatch, userId]);
+    // useEffect(() => {
+    //     (async () => {
+    //         await dispatch(getSubjectsThunk(userId));
+    //     })();
+    // }, [dispatch, userId]);
 
 
-    const subject = subjectList[subject_id - 1].heading;
-    console.log(subjectList[subject_id - 1], "*****************")
 
 
 
