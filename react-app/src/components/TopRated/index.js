@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllJokesThunk } from "../../store/joke"
+import { getAllJokesThunk, deleteJokeThunk } from "../../store/joke"
+
+import EditJokeModal from "../ModalJokeEdit";
 import "./TopRated.css"
 
 
@@ -49,11 +51,14 @@ const TopRated = () => {
     });
     const avgRating = (allJokesList.length > 0) ? (sum / allJokesList.length).toFixed(1) : 0;
 
+    const deleteJoke = id => {
+        dispatch(deleteJokeThunk(id));
+    };
 
     return (
         <div className="toprated-container">
             <div id="background"></div>
-            <div className="toprated-title"><h1>You have {allJokesList.length} jokes with average rating of {avgRating}/5</h1></div>
+            <div className="toprated-title"><h1>{allJokesList.length} jokes with average rating: {avgRating}/5</h1></div>
             <div className="toprated-rating-selector">
                 <select
                     value={rating}
@@ -83,7 +88,13 @@ const TopRated = () => {
                                 {joke.content}
                             </li>
                         </div>
+                        <div>
+                            <EditJokeModal joke={joke} />
+                        </div>
+                        <div className="joke-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
+
                     </ul>
+
                 </div>
             ))}
         </div>

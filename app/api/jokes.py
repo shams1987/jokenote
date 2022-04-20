@@ -5,6 +5,16 @@ from app.forms import JokeForm
 
 joke_routes = Blueprint("jokes", __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @joke_routes.route("/<int:userId>/subjects/<int:subjectId>", methods=["GET"])
 def getJokes(userId, subjectId):
     jokes = Joke.query.filter(Joke.user_id == userId, Joke.subject_id == subjectId).all()
@@ -19,16 +29,19 @@ def getSubjects(userId):
 @joke_routes.route("/<int:userId>/subjects/<int:subjectId>", methods=["POST"])
 def postJoke(userId, subjectId):
     form = JokeForm()
-    new_joke = Joke(
-        user_id=form.data["user_id"],
-        subject_id=form.data["subject_id"],
-        title=form.data["title"],
-        content=form.data["content"],
-        rating=form.data["rating"],
-    )
-    db.session.add(new_joke)
-    db.session.commit()
-    return new_joke.to_dict()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_joke = Joke(
+            user_id=form.data["user_id"],
+            subject_id=form.data["subject_id"],
+            title=form.data["title"],
+            content=form.data["content"],
+            rating=form.data["rating"],
+        )
+        db.session.add(new_joke)
+        db.session.commit()
+        return new_joke.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @joke_routes.route("/delete/<int:jokeId>", methods=["DELETE"])
@@ -42,12 +55,15 @@ def delete_joke(jokeId):
 @joke_routes.route("/edit", methods=["PUT"])
 def editJoke():
     form = JokeForm()
-    joke = Joke.query.get(form.data["id"])
-    joke.user_id=form.data["user_id"],
-    joke.subject_id=form.data["subject_id"],
-    joke.title=form.data["title"],
-    joke.content=form.data["content"],
-    joke.rating=form.data["rating"],
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        joke = Joke.query.get(form.data["id"])
+        joke.user_id=form.data["user_id"],
+        joke.subject_id=form.data["subject_id"],
+        joke.title=form.data["title"],
+        joke.content=form.data["content"],
+        joke.rating=form.data["rating"],
 
-    db.session.add(joke)
-    db.session.commit()
+        db.session.add(joke)
+        db.session.commit()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

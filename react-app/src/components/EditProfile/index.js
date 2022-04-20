@@ -90,9 +90,9 @@ function EditProfile() {
 
                     <div className="error-container">
                         <ul>
-                            {errors.map(err => (
-                                <li key={err} className="error">
-                                    {err}
+                            {errors.map(error => (
+                                <li key={error} className="error">
+                                    {error}
                                 </li>
                             ))}
                         </ul>

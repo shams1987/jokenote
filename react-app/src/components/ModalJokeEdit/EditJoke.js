@@ -12,7 +12,7 @@ function EditJoke({ joke }) {
     const [title, setTitle] = useState(joke.title);
     const [content, setContent] = useState(joke.content);
     const [rating, setRating] = useState(joke.rating);
-    //const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -26,13 +26,29 @@ function EditJoke({ joke }) {
         };
 
         //error validation
+        setErrors([])
 
-        dispatch(editJokeThunk(newJoke));
-        window.location.reload(false);
+        if ((title.length === 0) || title.length > 40) {
+            setErrors(["Please provide a title that is 1 to 40 characters long"])
+        }
+        else if (content.length === 0) {
+            setErrors(["Please provide a content for this joke"])
+        }
+        else {
+            dispatch(editJokeThunk(newJoke));
+            window.location.reload(false);
+        }
     };
 
     return (
         <div>
+            <div>
+                <ul>
+                    {errors.map((error) => (
+                        <li key={error} id="error">{error}</li>
+                    ))}
+                </ul>
+            </div>
             <form onSubmit={handleSubmit}>
                 <label>
                     title

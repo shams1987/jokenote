@@ -15,7 +15,7 @@ function AddJoke() {
     const [content, setContent] = useState("");
     const [rating, setRating] = useState(0);
 
-    //const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
 
     const handleSubmit = e => {
 
@@ -29,13 +29,30 @@ function AddJoke() {
         };
 
         //error validation
+        setErrors([])
 
-        dispatch(addJokeThunk(joke));
-        window.location.reload(false);
+        if ((title.length === 0) || title.length > 40) {
+            setErrors(["Please provide a title that is 1 to 40 characters long"])
+        }
+        else if (content.length === 0) {
+            setErrors(["Please provide a content for this joke"])
+        }
+        else {
+
+            dispatch(addJokeThunk(joke));
+            window.location.reload(false);
+        }
     };
 
     return (
         <div className="modal-container">
+            <div>
+                <ul>
+                    {errors.map((error) => (
+                        <li key={error} id="error">{error}</li>
+                    ))}
+                </ul>
+            </div>
             <form className="Joke-form" onSubmit={handleSubmit}>
                 <label>
                     title

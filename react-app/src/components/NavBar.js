@@ -32,7 +32,6 @@ const NavBar = ({ loaded }) => {
               to='/' exact={true} activeClassName='active'
               style={{ textDecoration: "none" }}
             >
-              <i class="fa-solid fa-house"></i>
               Home
             </NavLink>
           </li>
@@ -44,7 +43,6 @@ const NavBar = ({ loaded }) => {
               activeClassName="active"
               style={{ textDecoration: "none" }}
             >
-              <i class="fa-solid fa-user"></i>
               Profile
             </NavLink>
           </li>
@@ -54,7 +52,6 @@ const NavBar = ({ loaded }) => {
               to='/toprated' exact={true} activeClassName='active'
               style={{ textDecoration: "none" }}
             >
-              <i class="fa-solid fa-star"></i>
               Rated
             </NavLink>
           </li>
@@ -64,11 +61,10 @@ const NavBar = ({ loaded }) => {
               to='/subjects' exact={true}
               style={{ textDecoration: "none" }}
             >
-              <i class="fa-solid fa-face-grin"></i>
               Subjects
             </NavLink>
             <div>
-              {subjectList?.map(subject => (
+              {subjectList.length < 8 ? subjectList?.map(subject => (
                 <div key={subject.id}>
                   <ul className='nav-sub-list'>
                     <li key={subject.id + "A"}>
@@ -80,11 +76,13 @@ const NavBar = ({ loaded }) => {
                     </li>
                   </ul>
                 </div>
-              ))}
+              )) : null}
             </div>
           </li>
-
+          <div><a href="#"><i class="fa-brands fa-github"></i></a></div>
+          <div><a href="#"><i class="fa-brands fa-linkedin"></i></a></div>
         </ul>
+
       </nav>
     );
   }
