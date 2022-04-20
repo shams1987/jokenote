@@ -12,7 +12,7 @@ const getJokes = jokes => {
     };
 };
 
-// action creator for get all jokes for home page
+// action creator for get all jokes for toprated page
 const getAllJokes = jokes => {
     return {
         type: GET_ALL_JOKES,
@@ -55,7 +55,7 @@ export const getJokesThunk = (user_id, subject_id) => async dispatch => {
     }
 };
 
-// thunk for get all jokes for home page
+// thunk for get all jokes for toprated page
 export const getAllJokesThunk = (userId) => async dispatch => {
     const res = await fetch(`/api/jokes/all/${userId}`);
     if (res.ok) {

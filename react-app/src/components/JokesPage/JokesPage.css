@@ -1,6 +1,9 @@
 .joke-body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-left: 10%;
+
 }
 
 .joke-top {
@@ -31,8 +34,8 @@
 }
 
 .joke-content {
-    width: 300px;
-    height: 60px;
+    width: 500px;
+    height: 100px;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;

@@ -1,16 +1,24 @@
-.home-joke-list {
+.toprated-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10%;
+}
+
+.toprated-joke-list {
     list-style-type: none;
 }
 
-.home-joke-title-container {
+.toprated-joke-title-container {
     display: flex;
     align-items: center;
 }
 
-.home-joke-container {
+.toprated-joke-container {
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 600px;
     height: 60px;
     padding: 10px;
     border: 2px solid black;
@@ -20,10 +28,10 @@
     margin-right: 6em;
 }
 
-.home-joke-title {
+.toprated-joke-title {
     margin-right: 4em;
 }
 
-.home-joke-rating {
+.toprated-joke-rating {
     margin-left: 4em;
 }

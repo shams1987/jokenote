@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getSubjectsThunk, deleteSubjectThunk } from "../../store/subject";
 
@@ -26,30 +27,31 @@ const SubjectPage = () => {
 
 
     return (
-        <div>
+        <div className="subject-page-display">
             <div className="subject-title-container">
                 <div className="sibject-title">
-                    <h1>You have {subjectList.length} Subjects</h1>
+                    <h2>You have {subjectList.length} Subjects</h2>
                 </div>
-                <div>
+                <div className="subject-add-btn">
                     <AddSubjectModal />
                 </div>
             </div>
-            <div>
-                {subjectList?.map(subject => (
-                    <div key={subject.id} className="subject-container">
-                        <ul className="subject-list">
-                            <li key={subject.id + "A"}>
+            {subjectList?.map(subject => (
+                <div key={subject.id} className="subject-container">
+                    <ul className="subject-list">
+                        <li key={subject.id + "A"}>
+                            <NavLink
+                                to={`/jokes/${subject.id}`}>
                                 {subject.heading}
-                            </li>
-                        </ul>
-                        <div>
-                            <EditSubjectModal subject={subject} />
-                            <button onClick={() => deleteSubject(subject.id)}>delete</button>
-                        </div>
+                            </NavLink>
+                        </li>
+                    </ul>
+                    <div>
+                        <EditSubjectModal subject={subject} />
+                        <button className="subject-delete-btn" onClick={() => deleteSubject(subject.id)}>delete</button>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
     );
 }

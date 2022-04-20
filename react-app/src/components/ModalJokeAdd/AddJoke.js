@@ -35,8 +35,8 @@ function AddJoke() {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="modal-container">
+            <form className="Joke-form" onSubmit={handleSubmit}>
                 <label>
                     title
                     <input
@@ -52,7 +52,7 @@ function AddJoke() {
                         onChange={e => setContent(e.target.value)}
                     />
                 </label>
-                <label className="">
+                <label className="joke-rating">
                     Rating
                     <select
                         value={rating}

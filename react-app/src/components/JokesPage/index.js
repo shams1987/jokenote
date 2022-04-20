@@ -25,11 +25,6 @@ const JokesPage = () => {
     //     })();
     // }, [dispatch, userId]);
 
-
-
-
-
-
     useEffect(() => {
         dispatch(getJokesThunk(userId, subject_id));
     }, [dispatch, userId, subject_id]);

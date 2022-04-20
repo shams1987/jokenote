@@ -20,19 +20,23 @@ const NavBar = ({ loaded }) => {
   if (sessionUser) {
 
     return (
-      <nav>
-        <ul className="nav-list">
+      <nav className="menu-container">
+        <ul >
+
           <li>
             <LogoutButton />
           </li>
+
           <li>
             <NavLink
               to='/' exact={true} activeClassName='active'
               style={{ textDecoration: "none" }}
             >
+              <i class="fa-solid fa-house"></i>
               Home
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to={`/users/${userId}`}
@@ -40,14 +44,27 @@ const NavBar = ({ loaded }) => {
               activeClassName="active"
               style={{ textDecoration: "none" }}
             >
+              <i class="fa-solid fa-user"></i>
               Profile
             </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              to='/toprated' exact={true} activeClassName='active'
+              style={{ textDecoration: "none" }}
+            >
+              <i class="fa-solid fa-star"></i>
+              Rated
+            </NavLink>
+          </li>
+
           <li>
             <NavLink
               to='/subjects' exact={true}
               style={{ textDecoration: "none" }}
             >
+              <i class="fa-solid fa-face-grin"></i>
               Subjects
             </NavLink>
             <div>
@@ -66,6 +83,7 @@ const NavBar = ({ loaded }) => {
               ))}
             </div>
           </li>
+
         </ul>
       </nav>
     );

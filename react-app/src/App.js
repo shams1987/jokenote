@@ -12,6 +12,7 @@ import SubjectPage from './components/SubjectPage';
 import JokesPage from './components/JokesPage';
 import HomePage from './components/HomePage';
 import EditProfile from './components/EditProfile';
+import TopRated from './components/TopRated';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +54,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/jokes/:subjectId' exact={true} >
             <JokesPage />
+          </ProtectedRoute>
+          <ProtectedRoute path='/toprated' exact={true} >
+            <TopRated />
           </ProtectedRoute>
           <Route path='/'>
             <h1>Page Not Found</h1>
