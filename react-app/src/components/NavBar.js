@@ -79,8 +79,8 @@ const NavBar = ({ loaded }) => {
               )) : null}
             </div>
           </li>
-          <div><a href="#"><i class="fa-brands fa-github"></i></a></div>
-          <div><a href="#"><i class="fa-brands fa-linkedin"></i></a></div>
+          <div><a href="https://github.com/shams1987/jokenote"><i class="fa-brands fa-github"></i></a></div>
+          <div><a href="https://www.linkedin.com/in/shams-shaikh-330884229/"><i class="fa-brands fa-linkedin"></i></a></div>
         </ul>
 
       </nav>
