@@ -14,30 +14,28 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  // function ValidateEmail(emailCheck) {
-  //   // check for @ sign
-  //   let atSymbol = emailCheck.indexOf("@");
-  //   if (atSymbol < 1) return false;
-  //   //dot comes atleast 2 after @
-  //   let dot = emailCheck.indexOf(".");
-  //   if (dot <= atSymbol + 2) return false;
-  //   // check that the dot is not at the end
-  //   if (dot === emailCheck.length - 1) return false;
+  function ValidateEmail(emailCheck) {
+    // check for @ sign
+    let atSymbol = emailCheck.indexOf("@");
+    if (atSymbol < 1) return false;
+    //dot comes atleast 2 after @
+    let dot = emailCheck.indexOf(".");
+    if (dot <= atSymbol + 2) return false;
+    // check that the dot is not at the end
+    if (dot === emailCheck.length - 1) return false;
 
-  //   return true;
-  // }
+    return true;
+  }
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
     const newErrors = [];
 
-    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-    if (!regex.test(email)) {
+    if (!ValidateEmail(email)) {
       newErrors.push("please use a properly formatted email")
     }
-    // if (!ValidateEmail(email)) {
-    //   newErrors.push("please use a properly formatted email")
-    // }
     if (password !== repeatPassword) {
       newErrors.push("passowrds do not match.")
     }
