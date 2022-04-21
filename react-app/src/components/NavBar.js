@@ -100,7 +100,7 @@ const NavBar = ({ loaded }) => {
   else {
     return (
       <nav>
-        <ul>
+        <ul className='signup-login-combo'>
           <li>
             <NavLink to='/login' exact={true} activeClassName='active'
               style={{ textDecoration: "none" }}>

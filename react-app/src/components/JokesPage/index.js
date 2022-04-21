@@ -60,9 +60,11 @@ const JokesPage = () => {
                             </li>
                         </div>
                         <div>
-                            <EditJokeModal joke={joke} />
+                            <div>
+                                <EditJokeModal joke={joke} />
+                            </div>
+                            <div className="joke-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
                         </div>
-                        <div className="joke-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
                     </div>
                 </ul>
             ))}

@@ -29,7 +29,7 @@ const TopRated = () => {
         return arr;
     }
 
-    // select order of jokes by rating
+    // select which order of jokes by rating
     let sortedJokes;
 
     if (rating === "desc") {
@@ -83,16 +83,19 @@ const TopRated = () => {
                                 </li>
                             </div>
                         </div>
-                        <div className="toprated-joke-container">
-                            <li key={joke.id + "B"}>
-                                {joke.content}
-                            </li>
+                        <div className="toprated-bottom-container">
+                            <div className="toprated-joke-container">
+                                <li key={joke.id + "B"}>
+                                    {joke.content}
+                                </li>
+                            </div>
+                            <div>
+                                <div>
+                                    <EditJokeModal joke={joke} />
+                                </div>
+                                <div className="toprated-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
+                            </div>
                         </div>
-                        <div>
-                            <EditJokeModal joke={joke} />
-                        </div>
-                        <div className="joke-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
-
                     </ul>
 
                 </div>

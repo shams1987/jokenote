@@ -35,7 +35,7 @@
 
 .joke-content {
     width: 500px;
-    height: 100px;
+    height: 80px;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -49,5 +49,5 @@
 }
 
 .joke-delete-btn {
-    margin-left: 2em;
+    margin-top: 4px;
 }

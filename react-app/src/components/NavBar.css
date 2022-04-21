@@ -30,7 +30,9 @@
     border-bottom: 1px solid black; */
 }
 
-
+.signup-login-combo {
+    display: none;
+}
 
 .nav-button {
     width: 220px;

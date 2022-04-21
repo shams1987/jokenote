@@ -15,11 +15,16 @@
     align-items: center;
 }
 
+.toprated-bottom-container {
+    display: flex;
+    align-items: center;
+}
+
 .toprated-joke-container {
     display: flex;
     align-items: center;
-    width: 600px;
-    height: 60px;
+    width: 500px;
+    height: 80px;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -34,4 +39,8 @@
 
 .toprated-joke-rating {
     margin-left: 4em;
+}
+
+.toprated-delete-btn {
+    margin-top: 4px;
 }
