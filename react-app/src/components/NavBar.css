@@ -16,7 +16,7 @@
 
 .menu-container {
     width: 20%;
-    background-color: grey;
+    background-color: white;
 }
 
 .menu-container li {
@@ -25,27 +25,50 @@
     font-size: 18px;
     letter-spacing: 2px;
     display: list-item;
-    padding: 20px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    padding: 5px;
+    /* border-top: 1px solid black;
+    border-bottom: 1px solid black; */
 }
 
-.menu-container li:hover {
-    transition: 0.5s;
-    letter-spacing: 4px;
+
+
+.nav-button {
+    width: 220px;
+    height: 40px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-weight: bolder;
 }
 
-/* nav {
-    position: sticky;
-    background-color: grey;
-
-
+.subject-button {
+    width: 220px;
+    height: 30px;
+    border-radius: 4px;
+    /* margin-top: 15px; */
+    font-weight: lighter;
 }
 
-.nav-list {
-    list-style-type: none;
+.about-me {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
 
-.nav-sub-list {
-    list-style-type: none;
-} */
+.fa-brands {
+    padding: 0 10px;
+}
+
+.img-logo2 {
+    width: 50%;
+    height: auto;
+}
+
+.img-logo2-container {
+    margin: 20px 0;
+}
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+    margin-left: 20px;
+}

@@ -1,4 +1,50 @@
 /* TODO Add site wide styles */
+
+
 li#error::marker {
     content: "❌"
+}
+
+
+* {
+    font-family: "Monsterrat", sans-serif;
+    /* background: linear-gradient(0deg, rgba(204, 204, 204, 1) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+
+.button-login {
+    width: 320px;
+    height: 40px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bolder;
+}
+
+.white-button {
+    border: 1px rgb(0, 170, 15) solid;
+    background: white;
+    color: rgb(0, 170, 15);
+
+}
+
+.green-button {
+    border: 1px rgb(0, 170, 15) solid;
+    background: rgb(0, 170, 15);
+    color: white;
+}
+
+.yellow-button {
+    border: 1px rgb(206, 220, 0) solid;
+    background: rgb(206, 220, 0);
+    color: black;
+}
+
+button:hover {
+    transition: 0.5s;
+    letter-spacing: 4px;
+    cursor: pointer;
+}
+
+button {
+    width: 150px;
+    height: 25px;
 }

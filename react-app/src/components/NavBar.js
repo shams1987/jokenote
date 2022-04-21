@@ -4,6 +4,7 @@ import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from "react-redux";
 import { getSubjectsThunk } from '../store/subject';
 import "./NavBar.css";
+import logo2 from "../img/logo2.jpg"
 
 const NavBar = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user);
@@ -21,29 +22,30 @@ const NavBar = ({ loaded }) => {
 
     return (
       <nav className="menu-container">
+        <div className='img-logo2-container'>
+          <img className="img-logo2" src={logo2} alt="logo2"></img>
+        </div>
         <ul >
 
-          <li>
-            <LogoutButton />
-          </li>
+
 
           <li>
             <NavLink
               to='/' exact={true} activeClassName='active'
               style={{ textDecoration: "none" }}
             >
-              Home
+              <button className="green-button nav-button"> Home</button>
             </NavLink>
           </li>
 
-          <li>
+          <li >
             <NavLink
               to={`/users/${userId}`}
               exact={true}
               activeClassName="active"
               style={{ textDecoration: "none" }}
             >
-              Profile
+              <button className="green-button nav-button"> Profile</button>
             </NavLink>
           </li>
 
@@ -52,36 +54,44 @@ const NavBar = ({ loaded }) => {
               to='/toprated' exact={true} activeClassName='active'
               style={{ textDecoration: "none" }}
             >
-              Rated
+              <button className="green-button nav-button"> Rated</button>
             </NavLink>
           </li>
 
-          <li>
+          <li >
             <NavLink
               to='/subjects' exact={true}
               style={{ textDecoration: "none" }}
             >
-              Subjects
+              <button className="green-button nav-button">Subjects</button>
             </NavLink>
-            <div>
-              {subjectList.length < 8 ? subjectList?.map(subject => (
-                <div key={subject.id}>
-                  <ul className='nav-sub-list'>
-                    <li key={subject.id + "A"}>
-                      <NavLink
-                        to={`/jokes/${subject.id}`}
-                        style={{ textDecoration: "none", color: "black" }} >
-                        {subject.heading}
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-              )) : null}
-            </div>
           </li>
-          <div><a href="https://github.com/shams1987/jokenote"><i class="fa-brands fa-github"></i></a></div>
-          <div><a href="https://www.linkedin.com/in/shams-shaikh-330884229/"><i class="fa-brands fa-linkedin"></i></a></div>
+          <div>
+            {subjectList.length < 8 ? subjectList?.map(subject => (
+              <div key={subject.id}>
+                <ul>
+                  <li key={subject.id + "A"}>
+                    <NavLink
+                      to={`/jokes/${subject.id}`}
+                      style={{ textDecoration: "none", color: "black" }} >
+                      <button className="yellow-button subject-button">{subject.heading}</button>
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            )) : null}
+          </div>
         </ul>
+
+        <div className="footer">
+          <div className='about-me'>
+            <div><a href="https://github.com/shams1987/jokenote"><i class="fa-brands fa-github"></i></a></div>
+            <div><a href="https://www.linkedin.com/in/shams-shaikh-330884229/"><i class="fa-brands fa-linkedin"></i></a></div>
+          </div>
+          <div className='logout-button'>
+            <LogoutButton />
+          </div>
+        </div>
 
       </nav>
     );

@@ -1,4 +1,5 @@
-
+import bigmic from "../../img/big-mic.jpg";
+import "./HomePage.css"
 
 
 const HomePage = () => {
@@ -7,7 +8,10 @@ const HomePage = () => {
 
 
     return (
-        <div> <h1>home page</h1></div>
+        <div>
+            <img className="bigmic" src={bigmic} alt="bigmic"></img>
+        </div>
+
     )
 
 }

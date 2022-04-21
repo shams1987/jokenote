@@ -1,0 +1,32 @@
+.signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: auto;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    flex-direction: column;
+}
+
+.form-field-signup {
+    width: 320px;
+    height: 30px;
+    border-radius: 4px;
+    margin: 5px;
+    border: 1px rgb(150, 150, 150) solid
+}
+
+.signup-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signup-title {
+    font-size: 50px;
+    font-weight: bolder;
+    color: rgb(0, 170, 15);
+}

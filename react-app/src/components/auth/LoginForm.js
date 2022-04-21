@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import "./LoginForm.css"
+import logo1 from "../../img/logo1.jpg"
+
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,45 +45,63 @@ const LoginForm = () => {
 
   return (
     <>
-      <div id="bg-login"></div>
-      <form onSubmit={onLogin}>
-        <div className="errors-field-container">
-          {errors.map((error, ind) => (
-            <div className="errors-field" key={ind}>{error}</div>
-          ))}
+      <div id="bg-login">
+        <div className='login-form'>
+          <div>
+            <img className="img-logo1" src={logo1} alt="logo1"></img>
+          </div>
+          <div className='login-title'>Login</div>
+          <div className=''>
+            <form onSubmit={onLogin}>
+              <div className="errors-field-container">
+                {errors.map((error, ind) => (
+                  <div className="errors-field" key={ind}>{error}</div>
+                ))}
+              </div>
+
+              <div >
+                {/* <label htmlFor='email'>Email</label> */}
+                <input className="form-field"
+                  name='email'
+                  type='text'
+                  placeholder='Email'
+                  value={email}
+                  onChange={updateEmail}
+                />
+              </div>
+
+              <div >
+                {/* <label htmlFor='password'>Password</label> */}
+                <input className="form-field"
+                  name='password'
+                  type='password'
+                  placeholder='Password'
+                  value={password}
+                  onChange={updatePassword}
+                />
+              </div>
+
+              <div className='login-buttons'>
+                <div >
+                  <button className="button-login green-button" type='submit'>Login</button>
+                </div>
+                <div>
+                  <button className="demo-login-btn button-login white-button" onClick={handleSubmitDemo}>
+                    DEMO
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <NavLink className="sign-up-link" to="/sign-up">
+                  Don't have an account? Sign Up Here!
+                </NavLink>
+              </div>
+
+            </form>
+          </div>
         </div>
-        <div className="form-field">
-          {/* <label htmlFor='email'>Email</label> */}
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div className="form-field">
-          {/* <label htmlFor='password'>Password</label> */}
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-          <button className="button-login" type='submit'>Login</button>
-        </div>
-        <div>
-          <button className="demo-login-btn button-login" onClick={handleSubmitDemo}>
-            DEMO
-          </button>
-        </div>
-        <div>
-          <NavLink className="sign-up-link" to="/sign-up">
-            Don't have an account? Sign Up Here!
-          </NavLink>
-        </div>
-      </form>
+      </div>
     </>
   );
 };
