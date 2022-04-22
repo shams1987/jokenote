@@ -12,6 +12,7 @@ const HomePage = () => {
     const allJokesList = useSelector(state => Object.values(state.joke));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
+
     const randomJokeObj = allJokesList[Math.floor(Math.random() * allJokesList.length)];
 
     let joke;

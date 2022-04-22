@@ -22,4 +22,4 @@ def username_exists(form, field):
 
 class EditProfileForm(FlaskForm):
     username = StringField("username", validators=[DataRequired(), username_exists])
-    email = StringField("email", validators=[DataRequired(), user_exists])
+    email = StringField("email", validators=[DataRequired(), user_exists, Email("Please submit a valid email")])
