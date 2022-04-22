@@ -101,7 +101,7 @@ const TopRated = () => {
                                 <div>
                                     <EditJokeModal joke={joke} />
                                 </div>
-                                <div className="toprated-delete-btn"><button className="black-button" onClick={() => deleteJoke(joke.id)}>delete</button></div>
+                                <div className="toprated-delete-btn"><button className="black-button" onClick={() => deleteJoke(joke.id)}>Delete</button></div>
                             </div>
                         </div>
 

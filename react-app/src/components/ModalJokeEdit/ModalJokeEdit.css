@@ -1,0 +1,51 @@
+.special-size {
+    width: 150px;
+
+}
+
+
+
+.form-field-joke {
+    width: 400px;
+    height: 30px;
+    border-radius: 4px;
+    margin: 5px;
+    border: 1px rgb(150, 150, 150) solid;
+    /* margin-top: 20px; */
+}
+
+.title-new-joke {
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
+    /* padding: 10px; */
+    /* margin-top: 40px; */
+
+
+
+}
+
+.centering-subject-modal {
+    display: flex;
+    align-items: center;
+}
+
+.title-margin-joke {
+    margin: 10px 0 5px 0;
+}
+
+
+.form-text-area-joke {
+    width: 400px;
+    height: 100px;
+    border-radius: 4px;
+    margin: 5px;
+    border: 1px rgb(150, 150, 150) solid;
+    /* margin-top: 20px; */
+}
+
+.rating-button {
+    display: flex;
+    justify-content: space-around;
+
+}

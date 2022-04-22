@@ -31,11 +31,7 @@ const HomePage = () => {
 
     return (
         <>
-            <div className="splash-message"> The ex-Arsenal forward scored with a close-range header after a cross by ex-Manchester City player Ferran Torres.
-
-                Marc-Andre ter Stegen saved well from Alexander Sorloth while Alexander Isak fired another chance wide.
-
-                Shortly before Aubameyang's goal, Ousmane Dembele's shot came back off the post. </div>
+            <div className="splash-message"> So, you think you are funny? If you are considering a career as a stand-up comic, start writing jokes categorized in subjects. As any successful comedian will tell you, writing jokes day in and day out requires a serious commitment. Coming up with ideas for a comedy stand-up set might seem easy but shaping this material into funny jokes that will make people laugh takes a lot of hard work. Let us get started !!! </div>
             <div className="splash-page-bacground">
 
             </div>

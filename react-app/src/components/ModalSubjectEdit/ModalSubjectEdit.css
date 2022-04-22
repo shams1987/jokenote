@@ -1,0 +1,35 @@
+.special-size {
+    width: 150px;
+
+}
+
+
+
+.form-field-subject {
+    width: 400px;
+    height: 30px;
+    border-radius: 4px;
+    margin: 5px;
+    border: 1px rgb(150, 150, 150) solid;
+    margin-top: 20px;
+}
+
+.title-new-subject {
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
+    padding: 10px;
+    margin-top: 40px;
+
+
+
+}
+
+.centering-subject-modal {
+    display: flex;
+    align-items: center;
+}
+
+.title-margin {
+    margin: 40px 0 20px 0;
+}

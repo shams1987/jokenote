@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { editJokeThunk } from "../../store/joke"
 
+import "./ModalJokeEdit.css"
+
 
 function EditJoke({ joke }) {
     const dispatch = useDispatch();
@@ -41,7 +43,8 @@ function EditJoke({ joke }) {
     };
 
     return (
-        <div>
+        <div className="modal-container">
+
             <div>
                 <ul>
                     {errors.map((error) => (
@@ -49,39 +52,56 @@ function EditJoke({ joke }) {
                     ))}
                 </ul>
             </div>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    title
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
-                </label>
-                <label>
-                    joke content
-                    <textarea
-                        value={content}
-                        onChange={e => setContent(e.target.value)}
-                    />
-                </label>
-                <label className="">
-                    Rating
-                    <select
-                        value={rating}
-                        onChange={e => setRating(e.target.value)}
-                        required
-                    >
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </label>
-                <button type="submit">edit</button>
-            </form>
+            <div>
+                <form className="Joke-form" onSubmit={handleSubmit}>
+                    <div className="title-margin-joke">
+                        <label className="title-new-joke">
+                            title
+                        </label>
+                    </div>
+                    <div>
+                        <input className="form-field-joke"
+                            type="text"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                    </div>
+                    <div className="title-margin-joke">
+                        <label className="title-new-joke">
+                            joke content
+                        </label>
+                    </div>
+                    <div>
+                        <textarea className="form-text-area-joke"
+                            value={content}
+                            onChange={e => setContent(e.target.value)}
+                        />
+                    </div>
+                    <div className="rating-button">
+                        <div>
+                            <label className="joke-rating">
+                                Rating
+                            </label>
+                            <select
+                                value={rating}
+                                onChange={e => setRating(e.target.value)}
+                                required
+                            >
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <button className="special-size green-button" type="submit">Edit Joke</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

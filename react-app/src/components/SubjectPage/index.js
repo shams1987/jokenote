@@ -51,7 +51,7 @@ const SubjectPage = () => {
                     </ul>
                     <div>
                         <EditSubjectModal subject={subject} />
-                        <button className="subject-delete-btn black-button" onClick={() => deleteSubject(subject.id)}>delete</button>
+                        <button className="subject-delete-btn black-button" onClick={() => deleteSubject(subject.id)}>Delete</button>
                     </div>
                 </div>
             ))}

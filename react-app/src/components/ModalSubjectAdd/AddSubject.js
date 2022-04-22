@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addSubjectThunk } from "../../store/subject"
+import { addSubjectThunk } from "../../store/subject";
+import "./ModalSubjectAdd.css";
 
 
 function AddSubject() {
