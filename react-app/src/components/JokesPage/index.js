@@ -13,11 +13,11 @@ const JokesPage = () => {
 
     const dispatch = useDispatch();
     const jokeList = useSelector(state => Object.values(state.joke).reverse());
-    const subjectList = useSelector(state => Object.values(state.subject));
+    // const subjectList = useSelector(state => Object.values(state.subject));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const subject_id = useParams().subjectId;
-    const subject = subjectList[subject_id - 1]?.heading;
+    // const subject = subjectList[subject_id - 1]?.heading;
 
     // useEffect(() => {
     //     (async () => {
@@ -37,7 +37,8 @@ const JokesPage = () => {
         <div className="joke-body">
 
             <div className="joke-top yellow-background">
-                <div className="joke-how-many"><h2>{subject} ({jokeList.length})</h2></div>
+                {/* <div className="joke-how-many"><h2>{subject} ({jokeList.length})</h2></div> */}
+                <div className="joke-how-many"><h2>You have {jokeList.length} jokes</h2></div>
                 <div className="joke-add-btn"><AddJokeModal /></div>
             </div>
 
