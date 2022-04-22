@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJokesThunk } from "../../store/joke"
 
-import bigmic from "../../img/big-mic.jpg";
+
 import "./HomePage.css"
 
 
@@ -31,10 +31,16 @@ const HomePage = () => {
 
     return (
         <>
-            <div>
-                <img className="bigmic" src={bigmic} alt="bigmic"></img>
+            <div className="splash-message"> The ex-Arsenal forward scored with a close-range header after a cross by ex-Manchester City player Ferran Torres.
+
+                Marc-Andre ter Stegen saved well from Alexander Sorloth while Alexander Isak fired another chance wide.
+
+                Shortly before Aubameyang's goal, Ousmane Dembele's shot came back off the post. </div>
+            <div className="splash-page-bacground">
+
             </div>
-            <p> {joke}</p>
+            <div className="splash-joke"> {joke}</div>
+
         </>
 
     )

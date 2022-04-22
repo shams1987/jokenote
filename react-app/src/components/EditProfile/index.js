@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { editProfileThunk } from "../../store/profile";
 import { authenticate } from "../../store/session";
 
-//import "./editProfile.css";
+import "./EditProfile.css";
 
 function EditProfile() {
     const dispatch = useDispatch();
@@ -62,55 +62,65 @@ function EditProfile() {
     };
 
     return (
-        <section className="main_bg body-iceCreamPage">
-            <form onSubmit={handleSubmit} className="container_col profile_edit_form">
-                <div>
-                    <div className="container_row profile_edit_inputs">
-                        <input type="hidden" value={userId} />
-                        <div className="container_col">
-                            <label>Username</label>
-                            <input
-                                type="text"
-                                placeholder="Username..."
-                                value={username}
-                                onChange={updateUserName}
-                            />
+        <section className="main_bg ">
+            <div className="edit-profile-form">
+                <form onSubmit={handleSubmit} className="container_col profile_edit_form">
+                    <div>
+                        <div className="container_row profile_edit_inputs">
+                            <input type="hidden" value={userId} />
+                            <div className="container_col">
+
+                                <label>Username</label>
+                            </div>
+
+                            <div>
+                                <input className="form-field-edit"
+                                    type="text"
+                                    value={username}
+                                    onChange={updateUserName}
+                                />
+                            </div>
+
+                            <div className="container_col">
+                                <label>Email</label>
+                            </div>
+                            <div>
+                                <input className="form-field-edit"
+                                    type="email"
+                                    value={email}
+                                    onChange={updateUserEmail}
+                                />
+                            </div>
                         </div>
 
-                        <div className="container_col">
-                            <label>Email</label>
-                            <input
-                                type="email"
-                                placeholder="New Email..."
-                                value={email}
-                                onChange={updateUserEmail}
-                            />
+                        <div className="error-container">
+                            <ul>
+                                {errors.map(error => (
+                                    <li key={error} className="error">
+                                        {error}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
-
-                    <div className="error-container">
-                        <ul>
-                            {errors.map(error => (
-                                <li key={error} className="error">
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
+                    <div className='edit-profile-buttons'>
+                        <div>
+                            <button type="Submit" className="button-login green-button">
+                                Accept
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={handleCancel}
+                                className="demo-login-btn button-login white-button"
+                            >
+                                Cancel
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div className="container_row profile_edit_btns">
-                    <button type="Submit" className="confirm-button">
-                        Accept
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleCancel}
-                        className="delete-button"
-                    >
-                        Cancel
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </section>
     );
 }

@@ -8,7 +8,7 @@ function EditSubjectModal({ subject }) {
 
     return (
         <>
-            <button className="big-button" onClick={() => setShowModal(true)}>
+            <button className="big-button green-button" onClick={() => setShowModal(true)}>
                 Edit
             </button>
             {showModal && (

@@ -26,6 +26,12 @@ li#error::marker {
 
 }
 
+.black-button {
+    border: 1px black solid;
+    background: black;
+    color: white;
+}
+
 .green-button {
     border: 1px rgb(0, 170, 15) solid;
     background: rgb(0, 170, 15);
@@ -45,6 +51,8 @@ button:hover {
 }
 
 button {
-    width: 150px;
+    width: 120px;
     height: 25px;
+    border-radius: 4px;
+
 }

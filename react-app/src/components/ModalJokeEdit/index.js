@@ -8,7 +8,7 @@ function EditJokeModal({ joke }) {
 
     return (
         <>
-            <button className="" onClick={() => setShowModal(true)}>
+            <button className="white-button" onClick={() => setShowModal(true)}>
                 Edit
             </button>
             {showModal && (

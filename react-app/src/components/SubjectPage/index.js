@@ -28,6 +28,7 @@ const SubjectPage = () => {
 
     return (
         <div className="subject-page-display">
+
             <div className="subject-title-container">
                 <div className="sibject-title">
                     <h2>You have {subjectList.length} Subjects</h2>
@@ -36,11 +37,13 @@ const SubjectPage = () => {
                     <AddSubjectModal />
                 </div>
             </div>
+
             {subjectList?.map(subject => (
                 <div key={subject.id} className="subject-container">
                     <ul className="subject-list">
-                        <li key={subject.id + "A"}>
+                        <li className="each-subject" key={subject.id + "A"}>
                             <NavLink
+                                className="each-link"
                                 to={`/jokes/${subject.id}`}>
                                 {subject.heading}
                             </NavLink>
@@ -48,7 +51,7 @@ const SubjectPage = () => {
                     </ul>
                     <div>
                         <EditSubjectModal subject={subject} />
-                        <button className="subject-delete-btn" onClick={() => deleteSubject(subject.id)}>delete</button>
+                        <button className="subject-delete-btn black-button" onClick={() => deleteSubject(subject.id)}>delete</button>
                     </div>
                 </div>
             ))}

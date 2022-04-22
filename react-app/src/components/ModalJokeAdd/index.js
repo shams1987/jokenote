@@ -8,7 +8,7 @@ function AddJokeModal() {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
+            <button className="green-button" onClick={() => setShowModal(true)}>
                 Add Joke
             </button>
             {showModal && (

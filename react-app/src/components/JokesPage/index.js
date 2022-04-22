@@ -35,10 +35,12 @@ const JokesPage = () => {
 
     return (
         <div className="joke-body">
-            <div className="joke-top">
-                <div className="joke-how-many"><h3>{subject} ({jokeList.length})</h3></div>
+
+            <div className="joke-top yellow-background">
+                <div className="joke-how-many"><h2>{subject} ({jokeList.length})</h2></div>
                 <div className="joke-add-btn"><AddJokeModal /></div>
             </div>
+
             {jokeList?.map(joke => (
                 <ul className="joke-list" key={joke.id}>
                     <div className="joke-title-container">
@@ -53,18 +55,20 @@ const JokesPage = () => {
                             </li>
                         </div>
                     </div>
-                    <div className="joke-container">
-                        <div className="joke-content">
+                    <div className="joke-bottom-container">
+                        <div className="joke-container">
                             <li key={joke.id + "B"}>
                                 {joke.content}
                             </li>
                         </div>
+
                         <div>
                             <div>
                                 <EditJokeModal joke={joke} />
                             </div>
-                            <div className="joke-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
+                            <div className="joke-delete-btn"><button className="black-button" onClick={() => deleteJoke(joke.id)}>delete</button></div>
                         </div>
+
                     </div>
                 </ul>
             ))}

@@ -58,19 +58,26 @@ const TopRated = () => {
     return (
         <div className="toprated-container">
             <div id="background"></div>
-            <div className="toprated-title"><h1>{allJokesList.length} jokes with average rating: {avgRating}/5</h1></div>
-            <div className="toprated-rating-selector">
-                <select
-                    value={rating}
-                    onChange={e => setRating(e.target.value)}
-                >
-                    <option value="desc">highest rated</option>
-                    <option value="asc">lowest rated</option>
-                </select>
+
+            <div className="title-selector">
+                <div className="toprated-title"><h1>Rated</h1></div>
+                <div className="toprated-rating-selector green-button">
+                    <select
+                        value={rating}
+                        onChange={e => setRating(e.target.value)}
+                    >
+                        <option value="desc">highest rated</option>
+                        <option value="asc">lowest rated</option>
+                    </select>
+                </div>
             </div>
+
+            <div >Jokes: {allJokesList.length},  Avg Rating: {avgRating}/5</div>
+
             {sortedJokes?.map(joke => (
                 <div key={joke.id}>
                     <ul className="toprated-joke-list">
+
                         <div className="toprated-joke-title-container">
                             <div className="toprated-joke-title">
                                 <li key={joke.id + "A"}>
@@ -83,9 +90,10 @@ const TopRated = () => {
                                 </li>
                             </div>
                         </div>
+
                         <div className="toprated-bottom-container">
                             <div className="toprated-joke-container">
-                                <li key={joke.id + "B"}>
+                                <li className="align-left" key={joke.id + "B"}>
                                     {joke.content}
                                 </li>
                             </div>
@@ -93,9 +101,10 @@ const TopRated = () => {
                                 <div>
                                     <EditJokeModal joke={joke} />
                                 </div>
-                                <div className="toprated-delete-btn"><button onClick={() => deleteJoke(joke.id)}>delete</button></div>
+                                <div className="toprated-delete-btn"><button className="black-button" onClick={() => deleteJoke(joke.id)}>delete</button></div>
                             </div>
                         </div>
+
                     </ul>
 
                 </div>

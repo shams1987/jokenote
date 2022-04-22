@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import "./Users.css";
 
 function User() {
   const [user, setUser] = useState({});
@@ -26,22 +27,24 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-      {sessionUser.id === user.id && (
-        <button
-          className=""
-          onClick={() => history.push(`/users/${userId}/edit`)}
-        >
-          Edit
-        </button>
-      )}
-    </ul>
+    <div className="user-form">
+      <ul>
+        <li className='user-info'>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li className='user-info'>
+          <strong>Email</strong> {user.email}
+        </li>
+        {sessionUser.id === user.id && (
+          <button
+            className="user-edit white-button"
+            onClick={() => history.push(`/users/${userId}/edit`)}
+          >
+            Edit
+          </button>
+        )}
+      </ul>
+    </div>
   );
 }
 export default User;

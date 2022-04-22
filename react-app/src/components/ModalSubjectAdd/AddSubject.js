@@ -35,6 +35,7 @@ function AddSubject() {
 
     return (
         <div>
+
             <div>
                 <ul>
                     {errors.map((error) => (
@@ -42,16 +43,25 @@ function AddSubject() {
                     ))}
                 </ul>
             </div>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Subject heading
-                    <textarea
-                        value={heading}
-                        onChange={e => setHeading(e.target.value)}
-                    />
-                </label>
-                <button type="submit">Add Subject</button>
-            </form>
+            <div className="centering-subject-modal">
+                <form onSubmit={handleSubmit}>
+                    <div className="title-margin">
+                        <label className="title-new-subject">
+                            Subject heading
+                        </label>
+                    </div>
+                    <div>
+                        <input className="form-field-subject"
+                            value={heading}
+                            onChange={e => setHeading(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <button className="special-size green-button" type="submit">Add Subject</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     );
 }
